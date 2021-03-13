@@ -12,17 +12,17 @@ def unique(list1):
 class PincodeSpider(scrapy.Spider):
     name = 'pincode'
     allowed_domains = ['https://www.indiatvnews.com/']
-    # start_urls = ['https://www.indiatvnews.com/pincode/maharashtra/beed/ambewadgaon/']
-    start_urls =unique(getAlllinks())
+    start_urls = ['https://www.indiatvnews.com/pincode/maharashtra/beed/ambewadgaon/']
+    # start_urls =unique(getAlllinks())
 
     def parse(self, response):
         item = PincodescraperItem()
-        response = response.css(".pin-details  tr")
+        response1 = response.css(".pin-details  tr")
         lst = []
-        for i in range(1,len(response)):
-            lst.append(response[i].css('td::text').extract())
+        for i in range(1,len(response1)):
+            lst.append(response1[i].css('td::text').extract())
             # yield {'text':response[i].css('td::text').extract()}
-
+        item["Office"] 	= response.css(".pin-details  tr th::text")[1].get()
         item["Pincode"] 	= lst[0][1]
         item["Taluk"] = lst[1][1]
         item["Division"] = lst[2][1]

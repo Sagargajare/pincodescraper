@@ -8,7 +8,7 @@ import scrapy
 
 class PincodescraperItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    Office = scrapy.Field()
     Pincode	= scrapy.Field()
     Taluk	= scrapy.Field()
     Division= scrapy.Field()
