@@ -12,8 +12,8 @@ def unique(list1):
 class PincodeSpider(scrapy.Spider):
     name = 'pincode'
     allowed_domains = ['https://www.indiatvnews.com/']
-    start_urls = ['https://www.indiatvnews.com/pincode/maharashtra/beed/ambewadgaon/']
-    # start_urls =unique(getAlllinks())
+    # start_urls = ['https://www.indiatvnews.com/pincode/maharashtra/beed/ambewadgaon/']
+    start_urls =unique(getAlllinks())
 
     def parse(self, response):
         item = PincodescraperItem()
