@@ -2,11 +2,18 @@ import scrapy
 
 from pincodescraper.items import PincodescraperItem
 from .run import getAlllinks
+def unique(list1):
+     
+    # insert the list to the set
+    list_set = set(list1)
+    # convert the set to the list
+    unique_list = (list(list_set))
+    return unique_list
 class PincodeSpider(scrapy.Spider):
     name = 'pincode'
     allowed_domains = ['https://www.indiatvnews.com/']
     # start_urls = ['https://www.indiatvnews.com/pincode/maharashtra/beed/ambewadgaon/']
-    start_urls =getAlllinks()
+    start_urls =unique(getAlllinks())
 
     def parse(self, response):
         item = PincodescraperItem()
